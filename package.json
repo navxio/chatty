@@ -8,6 +8,7 @@
     "@babel/register": "^7.16.7",
     "axios": "^0.24.0",
     "blessed": "^0.1.81",
+    "conf": "^10.1.1",
     "execa": "^5.0.0",
     "fs-extra": "^10.0.0",
     "ora": "^5.4.0",
@@ -19,9 +20,9 @@
   "devDependencies": {
     "@babel/cli": "^7.16.7",
     "@babel/core": "^7.16.7",
+    "@babel/plugin-transform-modules-commonjs": "^7.16.8",
     "@babel/preset-env": "^7.16.7",
-    "@babel/preset-react": "^7.16.7",
-    "@babel/plugin-transform-modules-commonjs": "^7.16.8"
+    "@babel/preset-react": "^7.16.7"
   },
   "volta": {
     "node": "16.13.1"
