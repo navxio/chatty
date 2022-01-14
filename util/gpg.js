@@ -1,7 +1,9 @@
 // execa based interface to gpg
 const execa = require('execa')
 const execaSync = execa.commandSync
-const conf = require('conf')
+const Conf = require('conf')
+
+const conf = new Conf()
 
 // each method will fail silently and not obstruct the program
 // although a log message will be issued
@@ -15,7 +17,7 @@ const encryptMessage = (message, recipientId) => {
   } catch(e) {
     // log this to the logger
     console.log(e)
-    return null;
+    return null
   }
   return encryptedMessage.stdout
 }
@@ -29,29 +31,56 @@ const decryptMessage = (message) => {
     decryptedMessage = execaSync(gpgCommand, {shell: true})
   } catch (e) {
     console.log(e)
-    return null;
+    return null
   }
   return decryptedMessage.stdout
 }
 
 const myGpgKey = () => {
   const myKeyId = conf.get(myKeyId)
-  const myKey = execaSync(`gpg --export -a ${myKeyId}`).stdout
-  return myKey;
+  let myKey
+  try {
+    myKey = execaSync(`gpg --export -a ${myKeyId}`).stdout
+  } catch(e) {
+    console.log(e)
+    return null
+  }
+  return myKey
 }
 
 const getPublicKey = (id) => {
+  const gpgCommand = `gpg --export -a ${id}`
+  let result
+  try {
+    result = execaSync(gpgCommand).stdout
+  } catch (e) {
+    console.log(e)
+    return null
+  }
+  return result
 }
 
 const listRecipients = () => {
   const gpgCommand = `gpg --list-keys`
-  const result = execaSync(gpgCommand).stdout
+  let result
+  try {
+    result = execaSync(gpgCommand).stdout
+  } catch(e) {
+    console.log(e)
+    return null
+  }
   // pull out all the email addresses
   const re = /<(\S+@\S+\.\S+)>/gim
   const matchesIterator = result.matchAll(re)
   const matches2DArray = Array.from(matchesIterator)
   const myKeysCommand = `gpg -K`
-  const myKeysResult = execaSync(myKeysCommand).stdout.matchAll(re)
+  let myKeysResult
+  try {
+    myKeysResult = execaSync(myKeysCommand).stdout.matchAll(re)
+  } catch(e) {
+    console.log(e)
+    return null
+  }
   const myKeysArray = Array.from(myKeysResult)
   const myKeys = myKeysArray.map(match => match[1])
 
@@ -65,7 +94,6 @@ const gpg = {
   listRecipients,
   myGpgKey,
   getPublicKey
-};
+}
 
-module.exports = gpg;
-
+module.exports = gpg
