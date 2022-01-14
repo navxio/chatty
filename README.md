@@ -22,13 +22,14 @@ GPG encrypted, ephemeral, real time chatting in the terminal
 #### Flags
 -i, --init <key-id>
 
-creates a live chat session with <key-id>
+Creates a live chat session with <key-id>
 
 -c, --connect <key-id>
  
-joins a pre created session
+Joins a pre created session
 
 -h, --help
+
 Print the help information
 
 Run without flag to enter a key chooser screen
