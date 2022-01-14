@@ -14,12 +14,11 @@ class ChatLine extends Component {
         vi
         focused
         onSubmit={this.submit}
-        left="5%"
-        top="5%"
-        width="90%"
+        top="90%"
+        width="100%"
         height="10%"
         border={{type: 'line'}}
-        style={{bg: 'cyan', border: {fg: 'blue'}}}>
+        style={{border: {fg: 'blue'}}}>
         <textbox
           onSubmit={this.submit}
           keys
