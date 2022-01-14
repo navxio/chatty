@@ -9,5 +9,10 @@
         },
       }
     ]
-  ]
+  ],
+  "env": {
+    "test": {
+      "plugins": ["@babel/plugin-transform-modules-common"]
+    }
+  }
 }
