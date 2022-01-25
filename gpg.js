@@ -33,7 +33,7 @@ const decryptMessage = async (message) => {
     console.log(e)
     return null
   }
-  return decryptedMessage.stdout
+  return decryptedMessage.stdout.trim()
 }
 
 const myGpgKey = () => {

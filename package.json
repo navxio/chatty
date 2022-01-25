@@ -1,6 +1,9 @@
 {
   "name": "chatty-cli",
   "version": "0.0.5",
+  "scripts": {
+    "test": "jest"
+  },
   "bin": {
     "chatty": "./cli.js"
   },
@@ -8,6 +11,7 @@
     "@babel/register": "^7.16.7",
     "axios": "^0.24.0",
     "blessed": "^0.1.81",
+    "bufferutil": "^4.0.6",
     "conf": "^10.1.1",
     "execa": "^5.0.0",
     "fs-extra": "^10.0.0",
@@ -15,6 +19,7 @@
     "react": "^17.0.2",
     "react-blessed": "^0.7.2",
     "react-use-websocket": "^2.9.1",
+    "utf-8-validate": "^5.0.8",
     "yargs": "^17.3.1"
   },
   "devDependencies": {
@@ -22,7 +27,9 @@
     "@babel/core": "^7.16.7",
     "@babel/plugin-transform-modules-commonjs": "^7.16.8",
     "@babel/preset-env": "^7.16.7",
-    "@babel/preset-react": "^7.16.7"
+    "@babel/preset-react": "^7.16.7",
+    "jest": "^27.4.7",
+    "zx": "^4.3.0"
   },
   "volta": {
     "node": "16.13.1"

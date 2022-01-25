@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import blessed from 'blessed';
 import {render} from 'react-blessed';
-import pkg from '../package.json'
 import ChatLine from './ChatLine';
 import ChatWindow from './ChatWindow';
 
@@ -19,7 +18,7 @@ class App extends Component {
 const screen = blessed.screen({
   autoPadding: true,
   smartCSR: true,
-  title: 'chatty v' + pkg.version
+  title: 'chatty'
 })
 
 screen.key(['escape', 'q', 'C-c'], function () {
