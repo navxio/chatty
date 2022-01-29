@@ -1,4 +1,8 @@
-## chatty
+<p align='center'>
+![chatty_512](https://user-images.githubusercontent.com/9297865/151671270-f8130da4-6842-461f-bf29-df4fe1cc6fed.png)
+</p>
+
+<h2 align='center'>chatty</h2>
 
 GPG encrypted, ephemeral, real time chatting in the terminal
 
