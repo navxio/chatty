@@ -3,6 +3,9 @@
 </p>
 
 <h2 align='center'>chatty</h2>
+<br>
+
+[![made with neovim](https://img.shields.io/badge/made_with-neovim-green?style=for-the-badge&logo=neovim)](https://github.com/navxio/tasq/blob/master/LICENSE)
 
 GPG encrypted, ephemeral, real time chatting in the terminal
 
