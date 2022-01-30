@@ -17,18 +17,11 @@ const request = axios.create({
 * initiates a new session with a gpg key id
   *
 */
-if (args.i) {
-  ora(`creating a new session with ${args.i}`).start();
-  const myGpgKey = gpg.myGpgKey()
-  const theirKey = gpg.getPublicKey(args.i)
-  request.post('/session', {
-    hostKey: myGpgKey,
-    guestKey: theirKey
-  }).then(() => {
-  })
-  .catch(e => {
 
-  })
+// flags -h, -c, -i are supposed to use in seclusion
+// using one negates the utility of another
+if (args.h) {
+  require('./components/Help')
 
 } else if (args.c) {
   // connect to an existing session
@@ -44,11 +37,23 @@ if (args.i) {
 
         })
 
-} else if (args.h) {
-        require('./components/Help')
-}
-else {
-        console.log('participant select')
-        // list all gpg keys
-        require('./components/ParticipantSelect')
+} else if (args.i) {
+  const spinner = ora(`creating a new session with ${args.i}`).start()
+  const myGpgKey = gpg.myGpgKey()
+  const theirKey = gpg.getPublicKey(args.i)
+  request.post('/session', {
+    hostKey: myGpgKey,
+    guestKey: theirKey
+  }).then(() => {
+      spinner.stop()
+  })
+  .catch(e => {
+      console.error(e)
+      process.exit(1)
+  })
+
+} else {
+  // no flag was passed
+  // list all gpg keys
+  require('./components/ParticipantSelect')
 }
