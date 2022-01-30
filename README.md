@@ -41,7 +41,5 @@ Joins a pre created session
 
 Print the help information
 
-Run without flag to enter a key chooser screen
-
-### Planned Features
-* persistent sessions
+-d, --default-key
+specify a default gpg personal key if you have more than one
