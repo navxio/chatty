@@ -6,6 +6,7 @@ const { hideBin } = require('yargs/helpers')
 const args = yargs(hideBin(process.argv)).argv
 const axios = require('axios')
 const ora = require('ora')
+const pkg = require('./package')
 const gpg = require('./gpg')
 
 const request = axios.create({
@@ -21,8 +22,24 @@ const request = axios.create({
 // flags -h, -c, -i are supposed to use in seclusion
 // using one negates the utility of another
 if (args.h) {
-  require('./components/Help')
+  console.log(`chatty ${pkg.version}
+    
+    Usage
+    chatty <flags>
 
+    Flags
+    -i, --init <key-id>
+
+    Creates a live chat session with <key-id>
+
+    -c, --connect <key-id>
+     
+    Joins a pre created session
+
+    -h, --help
+
+    Print the help information
+  `)
 } else if (args.c) {
   // connect to an existing session
   ora(`connecting to an existing session with ${args.c}`)
@@ -51,7 +68,6 @@ if (args.h) {
       console.error(e)
       process.exit(1)
   })
-
 } else {
   // no flag was passed
   // list all gpg keys
