@@ -1,8 +1,8 @@
 // execa based interface to gpg
 const execa = require('execa')
 const execaSync = execa.commandSync
-import {$} from 'zx'
-$.verbose = false;
+const {$} = require('zx')
+$.verbose = false
 
 // each method will fail silently and not obstruct the program
 // although a log message will be issued
@@ -34,17 +34,22 @@ const decryptMessage = async (message) => {
 }
 
 const myGpgKey = () => {
-  const myKeyId = conf.get(myKeyId)
-  let myKey
+
+  const re = /<(\S+@\S+\.\S+)>/gim
+  const myKeysCommand = `gpg -K`
+  let myKeysResult
   try {
-    myKey = execaSync(`gpg --export -a ${myKeyId}`).stdout
+    myKeysResult = execaSync(myKeysCommand).stdout.matchAll(re)
   } catch(e) {
-    console.log(e)
+    console.error(e)
     return null
   }
-  return myKey
+  const myKeysArray = Array.from(myKeysResult)
+  const myKeys = myKeysArray.map(match => match[1])
+  return myKeys[0]
 }
 
+// returns a public key for specified id
 const getPublicKey = (id) => {
   const gpgCommand = `gpg --export -a ${id}`
   let result
