@@ -7,6 +7,7 @@
 <br>
 
 [![made with neovim](https://img.shields.io/badge/made_with-neovim-green?style=for-the-badge&logo=neovim)](https://github.com/navxio/tasq/blob/master/LICENSE)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 GPG encrypted, ephemeral, real time chatting in the terminal
 
