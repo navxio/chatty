@@ -1,6 +1,7 @@
 <p align='center'>
-<img width='256' src='https://user-images.githubusercontent.com/9297865/151671270-f8130da4-6842-461f-bf29-df4fe1cc6fed.png' />
+<img width='256' src='https://user-images.githubusercontent.com/9297865/151686735-853abb5e-bbf3-4c1b-8506-9dda9ea0085c.png' />
 </p>
+
 
 <h2 align='center'>chatty</h2>
 <br>
