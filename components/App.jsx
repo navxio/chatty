@@ -1,16 +1,12 @@
 import React, {Component} from 'react';
 import blessed from 'blessed';
 import {render} from 'react-blessed';
-import ChatLine from './ChatLine';
-import ChatWindow from './ChatWindow';
+import ChatScreen from './ChatScreen';
 
 class App extends Component {
   render() {
     return (
-      <>
-      <ChatWindow />
-      <ChatLine />
-      </>
+      <ChatScreen />
     );
   }
 

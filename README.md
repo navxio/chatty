@@ -42,4 +42,5 @@ Joins a pre created session
 Print the help information
 
 -d, --default-key
+
 specify a default gpg personal key if you have more than one

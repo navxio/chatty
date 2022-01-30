@@ -1,11 +1,8 @@
 // execa based interface to gpg
 const execa = require('execa')
 const execaSync = execa.commandSync
-const Conf = require('conf')
 import {$} from 'zx'
 $.verbose = false;
-
-const conf = new Conf()
 
 // each method will fail silently and not obstruct the program
 // although a log message will be issued
