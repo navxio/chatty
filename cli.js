@@ -22,7 +22,7 @@ const request = axios.create({
 // flags -h, -c, -i are supposed to use in seclusion
 // using one negates the utility of another
 if (args.h) {
-  console.log(`chatty ${pkg.version}
+  console.log(`chatty v${pkg.version}
     
     Usage
     chatty <flags>
