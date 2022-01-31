@@ -43,16 +43,16 @@ if (args.h) {
 } else if (args.c) {
   // connect to an existing session
   ora(`connecting to an existing session with ${args.c}`)
-        const guestKey = gpg.myGpgKey()
-        const hostKey = args.c
-        request.post('/connection', {
-                guestKey,
-                hostKey
-        }).then(() => {
-        })
-        .catch(e => {
+  const guestKey = gpg.myGpgKey()
+  const hostKey = args.c
+  request.post('/connection', {
+          guestKey,
+          hostKey
+  }).then(() => {
+  })
+  .catch(e => {
 
-        })
+  })
 
 } else if (args.i) {
   const spinner = ora(`creating a new session with ${args.i}`).start()
@@ -70,6 +70,8 @@ if (args.h) {
   })
 } else {
   // no flag was passed
-  // list all gpg keys
+  // render a select screen
+  // carrying all gpg keys
+  // available for chat
   require('./components/ParticipantSelect')
 }
