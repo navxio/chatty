@@ -18,6 +18,7 @@
     "react": "^17.0.2",
     "react-blessed": "^0.7.2",
     "react-use-websocket": "^2.9.1",
+    "socket.io-client": "^4.4.1",
     "utf-8-validate": "^5.0.8",
     "yargs": "^17.3.1"
   },
