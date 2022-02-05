@@ -5,17 +5,24 @@ import ChatWindow from './ChatWindow';
 import ChatLine from './ChatLine';
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       messages: [],
+      socket: props.data.socket,
     };
+
+    props.data.socket.on('chat message', (message) => {
+      this.setState((state) => {
+        state.messages.push(message);
+        return state;
+      });
+    });
   }
 
   sendMessage(message) {
     if (message) {
-      const socket = this.props.data.socket;
-      socket.emit('chat message', { message });
+      this.state.socket.emit('chat message', { message });
       this.setState((state) => {
         state.messages.push(message);
         return state;
