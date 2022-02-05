@@ -41,6 +41,9 @@ Joins a pre created session
 
 Print the help information
 
--d, --default-key
+-k, --default-key
 
 specify a default gpg personal key if you have more than one
+
+### Planned Features
+- [ ] persisted chat
