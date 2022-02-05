@@ -1,12 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 // chat line component
 class ChatLine extends Component {
-
-  submit() {
-
-  }
-
   render() {
     return (
       <form
@@ -17,16 +12,13 @@ class ChatLine extends Component {
         top="90%"
         width="100%"
         height="10%"
-        border={{type: 'line'}}
-        style={{border: {fg: 'blue'}}}>
-        <textbox
-          onSubmit={this.submit}
-          keys
-          mouse
-          inputOnFocus
-        />
-      </form>);
-    }
+        border={{ type: 'line' }}
+        style={{ border: { fg: 'blue' } }}
+      >
+        <textbox onSubmit={this.props.sendMessage} keys mouse inputOnFocus />
+      </form>
+    );
+  }
 }
 
 export default ChatLine;

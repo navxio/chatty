@@ -1,24 +1,46 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import blessed from 'blessed';
-import {render} from 'react-blessed';
-import ChatScreen from './ChatScreen';
+import { render } from 'react-blessed';
+import ChatWindow from './ChatWindow';
+import ChatLine from './ChatLine';
 
 class App extends Component {
-  render() {
-    return (
-      <ChatScreen />
-    );
+  constructor() {
+    super();
+    this.state = {
+      messages: [],
+    };
   }
 
+  sendMessage(message) {
+    if (message) {
+      const socket = this.props.data.socket;
+      const newMessages = [...this.state.messages, message];
+      //  socket.emit('chat message', { message });
+      this.setState({ messages: newMessages });
+    }
+  }
+
+  render() {
+    return (
+      <>
+        <ChatWindow messages={this.state.messages} />
+        <ChatLine sendMessage={this.sendMessage.bind(this)} />
+      </>
+    );
+  }
 }
+
 const screen = blessed.screen({
   autoPadding: true,
   smartCSR: true,
-  title: 'chatty'
-})
+  title: 'chatty',
+});
 
 screen.key(['escape', 'q', 'C-c'], function () {
   return process.exit(0);
-})
+});
 
-const component = render(<App />, screen);
+module.exports = (data) => {
+  render(<App data={data} />, screen);
+};

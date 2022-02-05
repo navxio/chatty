@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class ChatWindow extends Component {
   constructor(props) {
@@ -7,9 +7,14 @@ class ChatWindow extends Component {
 
   render() {
     return (
-      <box width="100%" height="90%"
-        top="0%" border={{type: 'line'}}
-        style={{border: {fg: 'red'}}}>
+      <box
+        width="100%"
+        height="90%"
+        top="0%"
+        border={{ type: 'line' }}
+        style={{ border: { fg: 'red' } }}
+      >
+        {this.props.messages}
       </box>
     );
   }
