@@ -2,7 +2,9 @@
   "name": "chatty-cli",
   "version": "0.0.6",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "DEBUG=user node cli.js",
+    "debug": "DEBUG=* node cli.js"
   },
   "bin": {
     "chatty": "./cli.js"
@@ -12,6 +14,7 @@
     "axios": "^0.24.0",
     "blessed": "^0.1.81",
     "bufferutil": "^4.0.6",
+    "debug": "^4.3.3",
     "execa": "^5.0.0",
     "fs-extra": "^10.0.0",
     "ora": "^5.4.0",
