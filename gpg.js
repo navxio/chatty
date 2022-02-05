@@ -34,7 +34,6 @@ const decryptMessage = async (message) => {
 }
 
 const myGpgKey = () => {
-
   const re = /<(\S+@\S+\.\S+)>/gim
   const myKeysCommand = `gpg -K`
   let myKeysResult
@@ -46,7 +45,7 @@ const myGpgKey = () => {
   }
   const myKeysArray = Array.from(myKeysResult)
   const myKeys = myKeysArray.map(match => match[1])
-  return myKeys[0]
+  return getPublicKey(myKeys[0])
 }
 
 // returns a public key for specified id
@@ -62,6 +61,7 @@ const getPublicKey = (id) => {
   return result
 }
 
+// lists all the available gpg keys
 const listRecipients = () => {
   const gpgCommand = `gpg --list-keys`
   let result
