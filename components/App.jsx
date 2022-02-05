@@ -15,9 +15,11 @@ class App extends Component {
   sendMessage(message) {
     if (message) {
       const socket = this.props.data.socket;
-      const newMessages = [...this.state.messages, message];
-      //  socket.emit('chat message', { message });
-      this.setState({ messages: newMessages });
+      socket.emit('chat message', { message });
+      this.setState((state) => {
+        state.messages.push(message);
+        return state;
+      });
     }
   }
 

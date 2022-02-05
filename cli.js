@@ -9,7 +9,7 @@ const debug = require('debug');
 const gpg = require('./gpg');
 
 const { io } = require('socket.io-client');
-const socket = io('http://127.0.0.1:3000');
+const socket = io('https://chatty-link.herokuapp.com');
 
 socket.on('connect_error', (err) => {
   console.error('connection error', err);
@@ -40,7 +40,7 @@ const args = yargs(hideBin(process.argv))
   .epilog('Copyright 2022 Navdeep Saini').argv;
 
 const request = axios.create({
-  baseURL: 'http://127.0.0.1:3000',
+  baseURL: 'https://chatty-link.herokuapp.com',
   timeout: 5000,
 });
 
@@ -67,6 +67,7 @@ if (args.c) {
     .then((result) => {
       log('result:' + JSON.stringify(result));
       spinner.stop();
+      require('./components/App')({ socket });
     })
     .catch((e) => {
       console.error(e);
@@ -88,12 +89,14 @@ if (args.c) {
       log('result data:' + JSON.stringify(result.data));
       spinner.stop();
       socket.emit('verify connection', { roomId: result.data.id });
+      require('./components/App')({ socket });
     })
     .catch((e) => {
       console.error(e);
       process.exit(1);
     });
 } else {
+  log('moving to home screen');
   // no flag was passed - render a select screen carrying all gpg keys available for chat
   require('./components/ParticipantSelect');
 }

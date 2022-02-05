@@ -14,7 +14,11 @@ class ChatWindow extends Component {
         border={{ type: 'line' }}
         style={{ border: { fg: 'red' } }}
       >
-        {this.props.messages}
+        {this.props.messages.map((message, index) => (
+          <text align="left" key={index}>
+            you: {message}
+          </text>
+        ))}
       </box>
     );
   }
