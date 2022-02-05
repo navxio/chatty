@@ -23,9 +23,7 @@
     "react-use-websocket": "^2.9.1",
     "socket.io-client": "^4.4.1",
     "utf-8-validate": "^5.0.8",
-    "yargs": "^17.3.1"
-  },
-  "devDependencies": {
+    "yargs": "^17.3.1",
     "@babel/cli": "^7.16.7",
     "@babel/core": "^7.16.7",
     "@babel/plugin-transform-modules-commonjs": "^7.16.8",
@@ -33,6 +31,8 @@
     "@babel/preset-react": "^7.16.7",
     "jest": "^27.4.7",
     "zx": "^4.3.0"
+  },
+  "devDependencies": {
   },
   "volta": {
     "node": "16.13.1"

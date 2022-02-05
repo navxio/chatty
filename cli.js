@@ -15,7 +15,7 @@ socket.on('connect_error', (err) => {
   console.error('connection error', err);
 });
 
-const spinner = ora('');
+const spinner = ora('Loading');
 const log = debug('user');
 
 const args = yargs(hideBin(process.argv))
