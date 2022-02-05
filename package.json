@@ -1,6 +1,6 @@
 {
   "name": "chatty-cli",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "scripts": {
     "test": "jest",
     "start": "DEBUG=user node cli.js",
@@ -32,8 +32,7 @@
     "jest": "^27.4.7",
     "zx": "^4.3.0"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "volta": {
     "node": "16.13.1"
   }
