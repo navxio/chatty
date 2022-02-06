@@ -89,7 +89,7 @@ if (args.c) {
       log('result data:' + JSON.stringify(result.data));
       spinner.stop();
       socket.emit('verify connection', { roomId: result.data.id });
-      require('./components/App')({ socket });
+      require('./components/App')({ socket, roomId: result.data.id });
     })
     .catch((e) => {
       console.error(e);
