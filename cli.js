@@ -6,9 +6,11 @@ const { hideBin } = require('yargs/helpers');
 const axios = require('axios');
 const ora = require('ora');
 const debug = require('debug');
+const { io } = require('socket.io-client');
+const execaSync = require('execa').commandSync;
+
 const gpg = require('./gpg');
 
-const { io } = require('socket.io-client');
 const socket = io('https://chatty-link.herokuapp.com');
 
 socket.on('connect_error', (err) => {
@@ -17,6 +19,9 @@ socket.on('connect_error', (err) => {
 
 const spinner = ora('Loading');
 const log = debug('user');
+
+// get bash username
+const username = execaSync('whoami').stdout;
 
 const args = yargs(hideBin(process.argv))
   .usage('Usage: chatty [options]')
@@ -49,15 +54,22 @@ const request = axios.create({
  *
  */
 
-// flags -h, -c, -i are supposed to use in seclusion
-// using one negates the utility of another
+// flags -h, -c, -i are supposed to be used in seclusion
+// using one negates the other
 if (args.c) {
   // connect to an existing session
   spinner.text = `connecting to an existing session with ${args.c}`;
   spinner.start();
-  const guestKey = gpg.myGpgKey();
-  const hostKey = args.c;
-  debug('joining a connection------------');
+
+  let guestKey;
+  if (args.k) {
+    guestKey = gpg.getPublicKey(args.k);
+  } else {
+    guestKey = gpg.myGpgKey();
+  }
+  const hostKey = gpg.getPublicKey(args.c);
+
+  debug('joining a connection------------------');
   debug('key-> ' + hostKey + ':' + guestKey);
   request
     .post('/connection', {
@@ -65,9 +77,14 @@ if (args.c) {
       hostKey,
     })
     .then((result) => {
-      log('result:' + JSON.stringify(result));
+      console.log('found roomId', result.data.roomId);
       spinner.stop();
-      require('./components/App')({ socket });
+      socket.emit('verify connection', { roomId: result.data.roomId });
+      require('./components/App')({
+        socket,
+        roomId: result.data.roomId,
+        username,
+      });
     })
     .catch((e) => {
       console.error(e);
@@ -76,7 +93,12 @@ if (args.c) {
 } else if (args.i) {
   spinner.text = `creating a new session with ${args.i}`;
   spinner.start();
-  const hostKey = gpg.myGpgKey();
+  let hostKey;
+  if (args.k) {
+    hostKey = gpg.getPublicKey(args.k);
+  } else {
+    hostKey = gpg.myGpgKey();
+  }
   const guestKey = gpg.getPublicKey(args.i);
   debug('creating a connection------------');
   debug('key-> ' + hostKey + ':' + guestKey);
@@ -89,7 +111,7 @@ if (args.c) {
       log('result data:' + JSON.stringify(result.data));
       spinner.stop();
       socket.emit('verify connection', { roomId: result.data.id });
-      require('./components/App')({ socket, roomId: result.data.id });
+      require('./components/App')({ socket, roomId: result.data.id, username });
     })
     .catch((e) => {
       console.error(e);
