@@ -22,7 +22,10 @@ class App extends Component {
 
   sendMessage(message) {
     if (message) {
-      this.state.socket.emit('chat message', { message });
+      this.state.socket.emit('chat message', {
+        roomId: this.props.data.roomId,
+        message,
+      });
       this.setState((state) => {
         state.messages.push(message);
         return state;
