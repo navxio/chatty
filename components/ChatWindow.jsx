@@ -8,20 +8,15 @@ class ChatWindow extends Component {
 
   render() {
     return (
-      <box
+      <list
         scrollable={true}
         label={`chatty v${pkg.version}`}
         width="100%"
         height="93%"
         top="0%"
+        items={this.props.messages}
         border={{ type: 'line' }}
-      >
-        {this.props.messages.map((message, index) => (
-          <text align="left" key={index}>
-            you: {message}
-          </text>
-        ))}
-      </box>
+      ></list>
     );
   }
 }
