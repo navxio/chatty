@@ -8,7 +8,7 @@ class ChatLine extends Component {
         keys
         vi
         focused
-        onSubmit={this.submit}
+        onSubmit={this.props.sendMessage}
         top="90%"
         width="100%"
         height="10%"
