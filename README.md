@@ -30,7 +30,7 @@ GPG encrypted, ephemeral, real time chatting in the terminal
 `chatty <flags> arg`
 
 #### Flags
--i, --init <key-id>
+-w, --with <key-id>
 
 Creates a live chat session with <key-id>
 

@@ -25,8 +25,8 @@ const username = execaSync('whoami').stdout;
 
 const args = yargs(hideBin(process.argv))
   .usage('Usage: chatty [options]')
-  .option('init', {
-    alias: 'i',
+  .option('with', {
+    alias: 'w',
     type: 'string',
     description: 'Initiate a chat session',
   })
@@ -91,9 +91,9 @@ if (args.c) {
       console.error(e);
       process.exit(1);
     });
-} else if (args.i) {
+} else if (args.w) {
   // create a new session
-  spinner.text = `Creating a new session with ${args.i}`;
+  spinner.text = `Creating a new session with ${args.w}`;
   spinner.start();
   let hostKey;
   if (args.k) {
@@ -101,8 +101,8 @@ if (args.c) {
   } else {
     hostKey = gpg.myGpgKey();
   }
-  const guestKey = gpg.getPublicKey(args.i);
-  debug('creating a connection----------------------');
+  const guestKey = gpg.getPublicKey(args.w);
+  debug('creating a connection---------------------------------');
   debug('key-> ' + hostKey + ':' + guestKey);
   request
     .post('/session', {
@@ -117,7 +117,7 @@ if (args.c) {
         socket,
         roomId: result.data.id,
         username,
-        target: args.i,
+        target: args.w,
       });
     })
     .catch((e) => {
