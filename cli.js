@@ -58,7 +58,7 @@ const request = axios.create({
 // using one negates the other
 if (args.c) {
   // connect to an existing session
-  spinner.text = `connecting to an existing session with ${args.c}`;
+  spinner.text = `Connecting to an existing session with ${args.c}`;
   spinner.start();
 
   let guestKey;
@@ -69,7 +69,7 @@ if (args.c) {
   }
   const hostKey = gpg.getPublicKey(args.c);
 
-  debug('joining a connection------------------');
+  debug('joining a connection-----------------------');
   debug('key-> ' + hostKey + ':' + guestKey);
   request
     .post('/connection', {
@@ -91,7 +91,8 @@ if (args.c) {
       process.exit(1);
     });
 } else if (args.i) {
-  spinner.text = `creating a new session with ${args.i}`;
+  // create a new session
+  spinner.text = `Creating a new session with ${args.i}`;
   spinner.start();
   let hostKey;
   if (args.k) {
@@ -100,7 +101,7 @@ if (args.c) {
     hostKey = gpg.myGpgKey();
   }
   const guestKey = gpg.getPublicKey(args.i);
-  debug('creating a connection------------');
+  debug('creating a connection----------------------');
   debug('key-> ' + hostKey + ':' + guestKey);
   request
     .post('/session', {
