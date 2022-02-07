@@ -8,7 +8,7 @@
 
 [![made with neovim](https://img.shields.io/badge/made_with-neovim-green?style=for-the-badge&logo=neovim)](https://neovim.io)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![released](https://img.shields.io/badge/released-no-orange?logo=npm)](npmjs.com/navxio/chatty-cli)
+[![npm](https://img.shields.io/npm/v/chatty-cli)](npmjs.com/navxio/chatty-cli)
 
 GPG encrypted, ephemeral, real time chatting in the terminal
 
