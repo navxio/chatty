@@ -14,6 +14,10 @@ class ChatLine extends Component {
     this.cancel = (_) => console.log('form cancelled');
   }
 
+  componentDidMount() {
+    this.myRef.current.focus();
+  }
+
   render() {
     return (
       <form
