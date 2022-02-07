@@ -12,13 +12,14 @@ class App extends Component {
       messages: [],
       socket: props.data.socket,
       target: this.props.data.target,
+      username: this.props.data.username,
     };
 
     props.data.socket.on('chat message', (encryptedMessage) => {
       gpg.decryptMessage(encryptedMessage).then((decryptedMessage) => {
         // decrypt it
         this.setState((state) => {
-          state.messages.push(decryptedMessage);
+          state.messages.push(this.state.target + ': ' + decryptedMessage);
           return state;
         });
       });
@@ -37,7 +38,7 @@ class App extends Component {
         message: encryptedMessage,
       });
       this.setState((state) => {
-        state.messages.push(message);
+        state.messages.push(this.state.username + ': ' + message);
         return state;
       });
     }
