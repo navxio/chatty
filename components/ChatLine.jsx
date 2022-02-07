@@ -24,6 +24,7 @@ class ChatLine extends Component {
         keys
         vi
         focused
+        label={'type your message and press <enter>'}
         onSubmit={this.submit}
         onReset={this.cancel}
         top="93%"
