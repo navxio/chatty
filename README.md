@@ -16,7 +16,7 @@ GPG encrypted, ephemeral, real time chatting in the terminal
 * End to end encrypted
 * Passwordless
 * Real time
-* modern, minimal TUI written in React
+* vim like keybindings
 
 ### Requirements
 * node.js >= 10
