@@ -32,7 +32,8 @@
     "zx": "^4.3.0"
   },
   "devDependencies": {
-    "jest": "^27.4.7"
+    "jest": "^27.4.7",
+    "react-devtools": "^4.23.0"
   },
   "volta": {
     "node": "16.13.1"

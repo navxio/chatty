@@ -84,6 +84,7 @@ if (args.c) {
         socket,
         roomId: result.data.roomId,
         username,
+        target: args.c,
       });
     })
     .catch((e) => {
@@ -112,7 +113,12 @@ if (args.c) {
       log('result data:' + JSON.stringify(result.data));
       spinner.stop();
       socket.emit('verify connection', { roomId: result.data.id });
-      require('./components/App')({ socket, roomId: result.data.id, username });
+      require('./components/App')({
+        socket,
+        roomId: result.data.id,
+        username,
+        target: args.i,
+      });
     })
     .catch((e) => {
       console.error(e);

@@ -3,6 +3,7 @@ import blessed from 'blessed';
 import { render } from 'react-blessed';
 import ChatWindow from './ChatWindow';
 import ChatLine from './ChatLine';
+const gpg = require('../gpg');
 
 class App extends Component {
   constructor(props) {
@@ -10,21 +11,30 @@ class App extends Component {
     this.state = {
       messages: [],
       socket: props.data.socket,
+      target: this.props.data.target,
     };
 
-    props.data.socket.on('chat message', (message) => {
-      this.setState((state) => {
-        state.messages.push(message);
-        return state;
+    props.data.socket.on('chat message', (encryptedMessage) => {
+      gpg.decryptMessage(encryptedMessage).then((decryptedMessage) => {
+        // decrypt it
+        this.setState((state) => {
+          state.messages.push(decryptedMessage);
+          return state;
+        });
       });
     });
   }
 
-  sendMessage(message) {
+  async sendMessage(message) {
+    const encryptedMessage = await gpg.encryptMessage(
+      message,
+      this.state.target
+    );
+
     if (message) {
       this.state.socket.emit('chat message', {
         roomId: this.props.data.roomId,
-        message,
+        message: encryptedMessage,
       });
       this.setState((state) => {
         state.messages.push(message);

@@ -6,9 +6,8 @@ class ChatLine extends Component {
     super(props);
 
     this.myRef = React.createRef();
-    //  this.submit = (data) => this.setState({ text: data });
     this.submit = (msgString) => {
-      this.props.sendMessage(msgString.trim());
+      this.props.sendMessage(msgString);
       this.myRef.current.clearValue();
       this.myRef.current.focus();
     };
