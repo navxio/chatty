@@ -29,6 +29,12 @@ GPG encrypted, ephemeral, real time chatting in the terminal
 ### Usage
 `chatty <flags> arg`
 
+### Example
+chatty --with <friend1@email.com>
+
+and on the other side
+chatty --connect <friend0@email.com>
+
 #### Flags
 -w, --with <key-id>
 
