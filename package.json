@@ -1,6 +1,6 @@
 {
   "name": "chatty-cli",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "scripts": {
     "test": "jest",
     "start": "DEBUG=user node cli.js",
