@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-require('@babel/register');
 
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
@@ -46,7 +45,7 @@ const args = yargs(hideBin(process.argv))
 
 const request = axios.create({
   baseURL: 'https://chatty-link.herokuapp.com',
-  timeout: 5000,
+  timeout: 10000,
 });
 
 /*
@@ -80,7 +79,7 @@ if (args.c) {
       console.log('found roomId', result.data.roomId);
       spinner.stop();
       socket.emit('verify connection', { roomId: result.data.roomId });
-      require('./components/App')({
+      require('./dist/App')({
         socket,
         roomId: result.data.roomId,
         username,
@@ -113,7 +112,7 @@ if (args.c) {
       log('result data:' + JSON.stringify(result.data));
       spinner.stop();
       socket.emit('verify connection', { roomId: result.data.id });
-      require('./components/App')({
+      require('./dist/App')({
         socket,
         roomId: result.data.id,
         username,
@@ -127,5 +126,5 @@ if (args.c) {
 } else {
   log('moving to home screen');
   // no flag was passed - render a select screen carrying all gpg keys available for chat
-  require('./components/ParticipantSelect');
+  require('./App/ParticipantSelect');
 }
