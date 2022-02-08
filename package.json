@@ -3,6 +3,7 @@
   "version": "0.0.13",
   "scripts": {
     "test": "jest",
+    "build": "babel components -d dist",
     "start": "DEBUG=user node cli.js",
     "debug": "DEBUG=* node cli.js"
   },
