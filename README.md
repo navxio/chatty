@@ -37,21 +37,21 @@ and
 `chatty --connect <friend0@email.com>`
 
 #### Flags
--w, --with <key-id>
+-w, --with `<key-id>`
 
 Creates a live chat session with <key-id>
 
--c, --connect <key-id>
+-c, --connect `<key-id>`
  
-Joins a pre created session
-
--h, --help
-
-Print the help information
+Joins an existing session
 
 -k, --default-key
 
 specify a default gpg personal key if you have more than one
+
+-h, --help
+
+Print the help information
 
 ### TODO
 - [ ] Help box
