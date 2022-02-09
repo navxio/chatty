@@ -12,7 +12,7 @@ const encryptMessage = async (message, recipientId) => {
   let encryptedMessage;
   try {
     encryptedMessage =
-      await $`echo ${message} | gpg --encrypt -r ${recipientId} -a`;
+      await $`echo ${message} | gpg --always-trust --encrypt -r ${recipientId} -a`;
   } catch (e) {
     // log this to the logger
     console.log(e);
@@ -27,7 +27,7 @@ const encryptMessage = async (message, recipientId) => {
 const decryptMessage = async (message) => {
   let decryptedMessage;
   try {
-    decryptedMessage = await $`echo ${message} | gpg --decrypt -a`;
+    decryptedMessage = await $`echo ${message} | gpg --always-trust --decrypt -a`;
   } catch (e) {
     console.error(e);
     return null;
