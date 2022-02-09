@@ -27,7 +27,8 @@ const encryptMessage = async (message, recipientId) => {
 const decryptMessage = async (message) => {
   let decryptedMessage;
   try {
-    decryptedMessage = await $`echo ${message} | gpg --always-trust --decrypt -a`;
+    decryptedMessage =
+      await $`echo ${message} | gpg --always-trust --decrypt -a`;
   } catch (e) {
     console.error(e);
     return null;

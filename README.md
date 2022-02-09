@@ -53,5 +53,11 @@ Print the help information
 
 specify a default gpg personal key if you have more than one
 
+### TODO
+- [ ] Help box
+- [ ] Vim keybindings expansion
+
 ### Planned Features
 - [ ] persisted chat
+
+Copyright © Navdeep Saini
