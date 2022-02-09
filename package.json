@@ -5,7 +5,8 @@
     "test": "jest",
     "build": "babel components -d dist",
     "start": "DEBUG=user node cli.js",
-    "debug": "DEBUG=* node cli.js"
+    "debug": "DEBUG=* node cli.js",
+    "prepublish": "npm run build"
   },
   "bin": {
     "chatty": "./cli.js"
