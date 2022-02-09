@@ -1,6 +1,6 @@
 {
   "name": "chatty-cli",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "author": "Navdeep Saini",
   "license": "GPLv3",
   "scripts": {
