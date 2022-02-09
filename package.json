@@ -1,6 +1,8 @@
 {
   "name": "chatty-cli",
   "version": "0.0.15",
+  "author": "Navdeep Saini",
+  "license": "GPLv3",
   "scripts": {
     "test": "jest",
     "build": "babel components -d dist",
