@@ -3,6 +3,14 @@
   "version": "0.0.16",
   "author": "Navdeep Saini",
   "license": "GPLv3",
+  "keywords": [
+    "chat",
+    "terminal",
+    "tty",
+    "cli",
+    "sockets",
+    "blessed"
+  ],
   "scripts": {
     "test": "jest",
     "build": "babel components -d dist",
