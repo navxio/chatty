@@ -56,6 +56,8 @@ specify a default gpg personal key if you have more than one
 ### TODO
 - [ ] Help box
 - [ ] Vim keybindings expansion
+- [ ] add logs
+- [ ] Participant selection screen
 
 ### Planned Features
 - [ ] persisted chat
