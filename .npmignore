@@ -1,3 +1,6 @@
 playground/
 components/
 *.test.js
+*.md
+.babelrc
+babel.config.json
