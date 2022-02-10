@@ -68,17 +68,17 @@ if (args.c) {
   }
   const hostKey = gpg.getPublicKey(args.c);
 
-  debug('joining a connection-----------------------');
-  debug('key-> ' + hostKey + ':' + guestKey);
+  log('joining a connection-----------------------');
+  log('key-> ' + hostKey + ':' + guestKey);
   request
     .post('/connection', {
       guestKey,
       hostKey,
     })
     .then((result) => {
-      console.log('found roomId', result.data.roomId);
       spinner.stop();
       socket.emit('verify connection', { roomId: result.data.roomId });
+      socket.emit('join signal', { roomId: result.data.roomId });
       require('./dist/App')({
         socket,
         roomId: result.data.roomId,
@@ -105,8 +105,8 @@ if (args.c) {
     hostKey = gpg.myGpgKey();
   }
   const guestKey = gpg.getPublicKey(args.w);
-  debug('creating a connection---------------------------------');
-  debug('key-> ' + hostKey + ':' + guestKey);
+  log('creating a connection---------------------------------');
+  log('key-> ' + hostKey + ':' + guestKey);
   request
     .post('/session', {
       hostKey,
@@ -114,13 +114,16 @@ if (args.c) {
     })
     .then((result) => {
       log('result data:' + JSON.stringify(result.data));
-      spinner.stop();
+      spinner.text = `Waiting for ${args.w} to join`;
       socket.emit('verify connection', { roomId: result.data.id });
-      require('./dist/App')({
-        socket,
-        roomId: result.data.id,
-        username,
-        target: args.w,
+      socket.on('join signal', () => {
+        spinner.stop();
+        require('./dist/App')({
+          socket,
+          roomId: result.data.id,
+          username,
+          target: args.c,
+        });
       });
     })
     .catch(() => {
