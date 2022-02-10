@@ -36,6 +36,8 @@ and
 
 `chatty --connect <friend0@email.com>`
 
+Note: No email address is transmitted to the server
+
 #### Flags
 -w, --with `<key-id>`
 
@@ -53,11 +55,15 @@ specify a default gpg personal key if you have more than one
 
 Print the help information
 
+### Keybindings
+Once in the chat window, press `q` to exit the session
+
 ### TODO
 - [ ] Help box
 - [ ] Vim keybindings expansion
 - [ ] add logs
 - [ ] Participant selection screen
+
 
 ### Planned Features
 - [ ] persisted chat
