@@ -8,7 +8,6 @@ $.verbose = false;
 // although a log message will be issued
 const encryptMessage = async (message, recipientId) => {
   // should return an encrypted message
-
   let encryptedMessage;
   try {
     encryptedMessage =
@@ -16,7 +15,6 @@ const encryptMessage = async (message, recipientId) => {
   } catch (e) {
     // log this to the logger
     console.log(e);
-    console.log(recipientId);
     return null;
   }
   return encryptedMessage.stdout;

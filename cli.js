@@ -124,7 +124,8 @@ if (args.c) {
       process.exit(1);
     });
 } else {
-  log('moving to home screen');
-  // no flag was passed - render a select screen carrying all gpg keys available for chat
-  require('./App/ParticipantSelect');
+  console.log(
+    'no flag passed, please use chatty --help to print the help information'
+  );
+  process.exit(1);
 }
