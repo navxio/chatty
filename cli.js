@@ -87,7 +87,11 @@ if (args.c) {
       });
     })
     .catch((e) => {
-      console.error(e);
+      if (e?.response?.status === 400) {
+        console.error("\nBad request: the requested session doesn't exist!");
+      } else {
+        console.error('An unknown error occurred!');
+      }
       process.exit(1);
     });
 } else if (args.w) {
@@ -119,8 +123,8 @@ if (args.c) {
         target: args.w,
       });
     })
-    .catch((e) => {
-      console.error(e);
+    .catch(() => {
+      console.error('\nAn error occurred, please try again!');
       process.exit(1);
     });
 } else {
