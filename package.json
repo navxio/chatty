@@ -3,6 +3,7 @@
   "version": "0.0.18",
   "author": "Navdeep Saini",
   "license": "GPLv3",
+  "repository": "https://github.com/navxio/chatty"
   "keywords": [
     "chat",
     "terminal",
