@@ -27,6 +27,8 @@ GPG encrypted, ephemeral, real time chatting in the terminal
 `npm i -g chatty-cli`
 
 ### Usage
+Make sure you've imported your contact's gpg keys properly :)
+
 `chatty <flags> arg`
 
 ### Example
@@ -58,11 +60,15 @@ Print the help information
 ### Keybindings
 Once in the chat window, press `Esc` twice to exit the session
 
+### Screenshot
+ <img width="832" alt="image" src="https://user-images.githubusercontent.com/9297865/153461599-f62f6a40-d5a9-4319-9ef1-0c8246723cfc.png">
+
 ### TODO
 - [ ] Help box
 - [ ] Vim keybindings expansion
 - [ ] add logs
 - [ ] Participant selection screen
+- [ ] `--debug` flag
 
 
 ### Planned Features
