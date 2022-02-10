@@ -56,7 +56,7 @@ specify a default gpg personal key if you have more than one
 Print the help information
 
 ### Keybindings
-Once in the chat window, press `q` to exit the session
+Once in the chat window, press `Esc` twice to exit the session
 
 ### TODO
 - [ ] Help box
