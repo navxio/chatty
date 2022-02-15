@@ -12,6 +12,8 @@
 
 GPG encrypted, ephemeral, real time chatting in the terminal
 
+<img width="832" alt="image" src="https://user-images.githubusercontent.com/9297865/154007245-dab9a5a1-4a5f-412f-b9b8-d23348af934d.png">
+
 ### Features
 * End to end encrypted
 * Passwordless
@@ -59,9 +61,6 @@ Print the help information
 
 ### Keybindings
 Once in the chat window, press `Esc` twice to exit the session
-
-### Screenshot
- <img width="832" alt="image" src="https://user-images.githubusercontent.com/9297865/153461599-f62f6a40-d5a9-4319-9ef1-0c8246723cfc.png">
 
 ### TODO
 - [ ] Help box
